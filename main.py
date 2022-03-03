@@ -1,8 +1,10 @@
-#GOALS play again maybe??
+
 #-----import statements-----
+from tkinter import font
 import turtle as trl
 import random as rand
 import time
+import myleaderboard as bd
 #---Starting game variables
 score = 0
 timeLeft = 6
@@ -10,9 +12,8 @@ countInt = 1000
 font_choice = ("Comic Sans MS", 20, "normal")
 colors = ('thistle', 'dodgerblue', 'mintcream', 'mediumvioletred','chartreuse','peru', 'olive', 'rosybrown', 'gainsboro', 'orchid', 'papayawhip', 'cadetblue', 'ivory', 'crimson','wheat', 'teal', 'azure', 'slategrey', 'lavender', 'plum', 'gray', 'olivedrab')
 challenge = False
+name = str(input('What is your name? '))
 
-
-#FIGURE OUT CHALLENGEWith stamps
 
 
 
@@ -90,10 +91,17 @@ def start():
             draw.goto(-500, -500)
             scoreWrite.clear()
             draw.clear()
+            gamewn.bgcolor('plum')
+            countdown.penup()
+            countdown.goto(-400, 200)
+            countdown.pendown()
+
+        
+
+            countdown.write(bd.addScore(name,score))
             countdown.penup()
             countdown.goto(-150,0)
             countdown.pendown()
-            gamewn.bgcolor('plum')
             countdown.write("Time's Up! Your score was " + str(score) + '.', font=font_choice)
         else:
             countdown.write("Time Left: " + str(timeLeft), font=font_choice)
@@ -120,7 +128,6 @@ def start():
         newx = rand.randint(-400,400)
         newy = rand.randint(-300,300)
         moveTurtle(newx,newy)
-
     #-----events----------------
     moveTurtle(x,y)
     draw.onclick(checkClick)
